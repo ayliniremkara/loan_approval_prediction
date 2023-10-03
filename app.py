@@ -14,16 +14,20 @@ def predict():
     input_data_df['education'] = input_data_df['education'].apply(lambda x: 1 if x == 'Graduate' else 0)
     input_data_df['self_employed'] = input_data_df['self_employed'].apply(lambda x: 1 if x == 'Yes' else 0)
 
+    
     model = joblib.load('models/log_reg.pkl')
 
-    prediction = model.predict(input_data_df)
+    predictions = model.predict(input_data_df)
 
-    if prediction[0] == 1:
-        loan_status = 'Approved'
-    else:
-        loan_status = 'Rejected'
+    output = []
 
-    return jsonify({'output ':{'loan_status': loan_status}})
+    for data, prediction in zip(input_data, predictions):
+        output.append({
+            "loan_id": data["loan_id"],
+            "loan_status": "Approved" if prediction else "Rejected"
+        })
+
+    return jsonify({'output': output})
 
 @app.route('/')
 def home():
