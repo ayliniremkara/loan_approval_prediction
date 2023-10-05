@@ -18,8 +18,8 @@ The project is created with:
 Firstly, in order to copy the project, clone the repository.
 
 ```bash
-git clone https://github.com/ayliniremkara/loan_approval_prediction
-cd loan_approval_prediction
+$ git clone https://github.com/ayliniremkara/loan_approval_prediction
+$ cd loan_approval_prediction
 ```
 
 Build docker. 
