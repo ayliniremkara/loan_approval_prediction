@@ -5,28 +5,32 @@ In this project, a machine learning model is created to predict whether customer
 
 ## Setup and Run the Project
 
-Firstly, in order to copy the project, clone the repository.
+1) Firstly, in order to copy the project, clone the repository.
 
 ```bash
 $ git clone https://github.com/ayliniremkara/loan_approval_prediction
 $ cd loan_approval_prediction
 ```
 
-Build docker. 
+2) Go to 'docker-compose.yml' file and change the volumes properly with your own host computer paths, so that volumes will be created successfully.
 
+
+3) Build & run Docker containers
 ```bash
-
-$ docker build  loan-approval-prediction .
-
+$ docker compose up
 ```
 
-Run docker. 
-
+4) Test if flask app is up and running with the following request.
 ```bash
-
-$ docker run -p 5000:5000 loan-approval-prediction
-
+$ http://localhost:2222/
 ```
+If you see `Welcome to Loan Prediction App!` as response it is working!
+
+5) Time to use the prediction endpoint! You can find example POST request body in the `request_example` folder.
+```bash
+$ http://localhost:2222/predict
+```
+
 
 
 

@@ -19,7 +19,12 @@ def predict():
         logging.error(f"Request receiving error: {str(e)}")
         return jsonify({"error": str(e)})
 
-    input_data_df = preprocessing.preprocess(input_data)
+    try:
+        input_data_df = preprocessing.preprocess(input_data)
+    except:
+        logging.error("Pre processing error!")
+        return "Internal server error occured!", 500
+
     logging.info("Preprocessing is done.")
 
     model = joblib.load('model_generation/models/decision_tree.pkl')
@@ -29,6 +34,7 @@ def predict():
         logging.info("Prediction is done.")
     except:
         logging.error("Prediction error!")
+        return "Internal server error occured, couldn't run prediction!", 500
     
     
     for data, prediction in zip(input_data, predictions):

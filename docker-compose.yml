@@ -5,6 +5,7 @@ services:
       context: .
     image: loan_approval_prediction
     container_name: loan_approval_prediction
+    volumes:
       - C:\Users\HP\Desktop\loan_approval_prediction:/app
     ports:
       - "2222:5000"
@@ -12,7 +13,7 @@ services:
 
   jupyter-notebook:
     build:
-      context: .odel_generation # Use this for mac
+      context: .
       dockerfile: ./jupyter.Dockerfile
     ports:
       - "8888:8888"
