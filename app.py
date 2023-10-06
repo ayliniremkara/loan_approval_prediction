@@ -22,7 +22,7 @@ def predict():
     input_data_df = preprocessing.preprocess(input_data)
     logging.info("Preprocessing is done.")
 
-    model = joblib.load('models/decision_tree.pkl')
+    model = joblib.load('models/rf.pkl')
 
     try:
         predictions = model.predict(input_data_df)

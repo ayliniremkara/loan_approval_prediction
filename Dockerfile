@@ -11,7 +11,7 @@ RUN python -m pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 #Exposing port 5000 from the container
-EXPOSE 5000
+EXPOSE 3000
 
 #Starting the Python application
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
+CMD ["python3", "app.py"]
