@@ -6,8 +6,8 @@ import logging
 logging.basicConfig(filename='logging.log', level=logging.INFO)
 
 app = Flask(__name__)
-@app.route("/predict", methods=['POST'])
 
+@app.route("/predict", methods=['POST'])
 def predict(): 
     output = []
 
@@ -22,11 +22,11 @@ def predict():
     input_data_df = preprocessing.preprocess(input_data)
     logging.info("Preprocessing is done.")
 
-    model = joblib.load('models/rf.pkl')
+    model = joblib.load('model_generation/models/decision_tree.pkl')
 
     try:
         predictions = model.predict(input_data_df)
-        logging.info("Predicting is done.")
+        logging.info("Prediction is done.")
     except:
         logging.error("Prediction error!")
     
@@ -42,7 +42,7 @@ def predict():
     
 @app.route('/')
 def home():
-    return "Welcome to Loan Approval Prediction App!"   
+    return "Welcome to Loan Prediction App!"
 
 if __name__ == '__main__':
-    app.run(host = '0.0.0.0', port = '3000', debug=True)
+    app.run(host = '0.0.0.0', port = '5000', debug=True)

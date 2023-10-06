@@ -1,0 +1,22 @@
+version: "3.4"
+services:
+  loan-approval-prediction:
+    build:
+      context: .
+    image: loan_approval_prediction
+    container_name: loan_approval_prediction
+      - C:\Users\HP\Desktop\loan_approval_prediction:/app
+    ports:
+      - "2222:5000"
+    tty: true
+
+  jupyter-notebook:
+    build:
+      context: .odel_generation # Use this for mac
+      dockerfile: ./jupyter.Dockerfile
+    ports:
+      - "8888:8888"
+    volumes:
+      - C:\Users\HP\Desktop\loan_approval_prediction\model_generation:/model_generation
+    environment:
+      - JUPYTER_ENABLE_LAB=yes

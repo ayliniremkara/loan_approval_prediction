@@ -11,7 +11,7 @@ RUN python -m pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 #Exposing port 5000 from the container
-EXPOSE 3000
+EXPOSE 5000
 
 #Starting the Python application
 CMD ["python3", "app.py"]
